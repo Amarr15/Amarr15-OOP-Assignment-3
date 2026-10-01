@@ -46,7 +46,25 @@ For example, `Student` and `Course` have an `Id`, but `string` and `int` do not.
 
 Therefore, the compiler cannot allow `item.Id` until we tell it that `T` must have an `Id`.
 
+## Step 7 — Generic Store
 
+### Why does `Store<string>` not compile?
+
+`Store<T>` has the constraint:
+
+`where T : class, IHasId`
+
+This means that `T` must be a reference type and must implement `IHasId`.
+
+`string` is a reference type, but it does not implement `IHasId`, so `Store<string>` does not satisfy the generic constraint and must not compile.
+
+### Research — Common name
+
+The kind of class built in Steps 4 and 5 is commonly called a **Repository**.
+
+The Repository pattern encapsulates data-access operations and provides a collection-like way to add, find, retrieve, and remove objects. Our generic `Store<T>` follows this idea by managing a collection of entities identified by `Id`.
+
+Source: Microsoft Learn — The Repository pattern.
 
 
 
