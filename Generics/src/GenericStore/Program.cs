@@ -11,7 +11,18 @@ studentStore.Add(new Student
     Id = 2,
     Name = "Ahmed"
 });
-
+try
+{
+    studentStore.Add(new Student
+    {
+        Id = 2,
+        Name = "Another Ahmed"
+    });
+}
+catch (InvalidOperationException ex)
+{
+    Console.WriteLine(ex.Message);
+}
 var student = studentStore.GetById(2);
 
 Console.WriteLine(student?.Name);
