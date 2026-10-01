@@ -1,24 +1,37 @@
-﻿var store = new CourseStore();
+﻿var studentStore = new Store<Student>();
 
-store.Add(new Course
+studentStore.Add(new Student
+{
+    Id = 1,
+    Name = "Ammar"
+});
+
+studentStore.Add(new Student
+{
+    Id = 2,
+    Name = "Ahmed"
+});
+
+var student = studentStore.GetById(2);
+
+Console.WriteLine(student?.Name);
+
+var courseStore = new Store<Course>();
+
+courseStore.Add(new Course
 {
     Id = 1,
     Title = "C#",
     Price = 500
 });
 
-store.Add(new Course
+courseStore.Add(new Course
 {
     Id = 2,
     Title = "ASP.NET Core",
     Price = 700
 });
 
-var course = store.GetById(2);
+var course = courseStore.GetById(2);
 
 Console.WriteLine($"{course?.Title} - {course?.Price}");
-
-store.Remove(2);
-
-Console.WriteLine(
-    store.GetById(2)?.Title ?? "Course not found");
