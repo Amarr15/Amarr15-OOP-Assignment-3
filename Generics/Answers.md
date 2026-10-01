@@ -29,3 +29,25 @@ Both `StudentStore` and `CourseStore`:
 - `Price`
 
 So the main difference is the type of object each store manages and the properties of that object.
+
+## Step 3 — Why GetById does not compile
+
+### Compiler error
+
+`CS1061: 'T' does not contain a definition for 'Id' and no accessible extension method 'Id' accepting a first argument of type 'T' could be found`
+
+### Explanation
+
+The compiler does not know that the generic type `T` has an `Id` property.
+
+`T` can represent any type, and not every type has an `Id`.
+
+For example, `Student` and `Course` have an `Id`, but `string` and `int` do not.
+
+Therefore, the compiler cannot allow `item.Id` until we tell it that `T` must have an `Id`.
+
+
+
+
+
+
